@@ -1,0 +1,101 @@
+ 
+ 
+<h1>Lista de Asignación</h1> 
+    
+<!-- <button type="button" class="btn btn-primary" routerLink="/agregar/{{ retornoid }}"> Asignación</button><br>   -->
+<div class="row">
+  <div class="col-md-12 text-center my-2">
+      <a type="button" class="btn btn-success" routerLink="/agregar/{{ retornoid }}">Agregar Asignación</a>
+  </div>
+
+  <a style="cursor: pointer" (click)="exportexcel()">
+    <mat-icon> cloud_download</mat-icon>
+  </a>
+
+</div> 
+ 
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="card-body table-responsive">
+   
+      <table   class="table table-hover" id="excel-table" >
+ 
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">MATRICULA</th>
+        <th scope="col">NOMBRE COMPLETO </th>
+         <th scope="col">ESPECIALIDAD</th>
+        <th scope="col">% ASIGNACION</th>
+        <th scope="col">COD APP</th>
+        <th scope="col">SQUAD</th>
+        <th scope="col">ROL</th>
+        <th scope="col">COMENTARIOS</th>
+       
+        
+    </tr>
+    </thead>
+    <tbody >
+     
+      
+    <tr *ngFor="let a of result | async; let i=index;let f=first;let l=last;let ev=even;let od=odd" >  
+        
+        <td>{{a.idPorcentajeAsignacion}}</td>
+        <td>{{a.matriculaUsuario}}</td>
+        <td>{{a.nombreUsuario+ " " +a.apellidopaternoUsuario +" " + a.apellidomaternoUsuario}}</td>
+        <td>{{a.especialidad}}</td>
+        <td> {{a.porcentaje}}  % </td>
+        <td> {{a?.aplicativo?.codAplicativo}} - {{a?.aplicativo?.nombreAplicativo}} </td>
+      
+        <td> {{a?.squad?.nombreSquad}} </td>
+        <td> {{a?.rol?.sqRol}} </td>
+        <!-- <td >  {{ tagNamesapp[i] }}     </td> -->
+        <!-- <td >  {{ tagNamessquad[i] }}      </td> -->
+        <!-- <td >  {{ tagNamesrol[i] }}      </td> -->
+        <td>{{a.comentarios}}</td>
+      
+        
+        <td>
+          <button type="button" class="btn btn-primary"
+                            routerLink="/editar/{{a.idPorcentajeAsignacion}}">Editar</button>
+         
+    </td>
+
+    <td>
+        <button type="button" class="btn btn-danger" aria-label="Close"
+            (click)="deleteasignar(a.idPorcentajeAsignacion)">Borrar</button>
+    </td>
+    
+     
+      </tr>
+      <tr >
+        
+      <tr >
+        <td colspan="3"></td>  
+        <td colspan="1"><b>TOTAL:</b> </td>  
+
+
+        <td colspan="1"  > 
+          <div *ngIf="total<100" class="colorred"> <b> {{ total }} %    </b> </div> 
+          <div *ngIf="total>100" class="colorred"> <b> {{ total }} % </b> </div>  
+          <div *ngIf="total==100" class="colorblue"> <b> {{ total }} % </b> </div>
+        
+        </td>  
+        <td colspan="1" > 
+          <div *ngIf="total<100" class="colorred"> <b> {{  text }}    </b> </div> 
+          <div *ngIf="total>100" class="colorred"> <b> {{  text }}  </b> </div>  
+          <div *ngIf="total==100" class="colorblue"> <b> {{  text }}  </b> </div>
+        </td>  
+        <td colspan="4"></td>        
+      </tr>
+  
+ 
+    </tbody> 
+    
+  </table>
+    </div>
+  </div>
+</div>
+ 
+ 

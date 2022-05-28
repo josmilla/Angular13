@@ -1,0 +1,55 @@
+<h1>Lista de TribuCoe</h1> 
+
+<div class="row">
+  <div class="col-12 text-center my-2">
+      <a type="button" class="btn btn-success" routerLink="/agregarsquad">Agregar Tribu </a>
+  </div>
+</div> 
+ 
+  
+
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="card-body table-responsive">
+        <table class="table table-hover" >
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">CODTRIBU</th>
+        <th scope="col"> NOMBRE</th>
+        <th scope="col">CATEGORIA</th>
+        <th scope="col">FECHAREGISTRO</th>
+        
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tribu  of AsignacionTribu  let i= index"  > 
+      
+       <th scope="row">{{  i +1  }}</th>  
+      
+        <td>{{tribu.codTribucoe}}</td>
+        <td>{{tribu.nombreTribucoe}}</td>
+         <td>{{ tribu .fechaRegistro | date:"dd/MM/yyyy" }}</td>
+        
+        
+
+        <td>
+
+          <button type="button" class="btn btn-primary"
+                            routerLink="/tribucoe/editartribu/{{tribu.idTribucoe}}">Editar</button>
+         
+    </td>
+     
+    <td>
+        <button type="button" class="btn btn-danger"
+            (click)="deletesquad(tribu.idTribucoe)">Borrar</button>
+    </td>  
+      </tr>
+    </tbody>
+  </table>
+    </div>
+  </div>
+</div>
+    
+ 

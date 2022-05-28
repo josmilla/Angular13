@@ -1,0 +1,50 @@
+<h1>Lista de Rol</h1> 
+    
+<div class="row">
+  <div class="col-12 text-center my-2">
+      <a type="button" class="btn btn-success" routerLink="/agregarrol">Agregar Rol </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card-body table-responsive">
+ <table class="table table-hover" >
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">NOMBRE ROL</th>
+        <th scope="col"> FECHA REGISTRO</th>
+        <th scope="col">USUARIO</th>
+       
+        
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let valor of AsignacionRol" >
+    
+          
+        <td>{{valor.idRol}}</td>
+        <td>{{valor.sqRol}}</td>
+        <td>{{valor.fechaRegistro}}</td>
+        <td>{{valor.usuarioRegistro}}</td>
+       
+
+       <td>
+
+          <button type="button" class="btn btn-primary"
+                            routerLink="/rol/editarrol/{{valor.idRol}}">Editar</button>
+         
+    </td>
+     
+    <td>
+        <button type="button" class="btn btn-danger"
+            (click)="deleterol(valor.idRol)">Borrar</button>
+    </td>    
+      </tr>
+    </tbody>
+  </table>
+    </div>
+  </div>
+</div>
+   

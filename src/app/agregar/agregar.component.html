@@ -1,0 +1,247 @@
+<div class="container">
+    <br />
+    <div class="row"  >
+      <div class="col">
+        <h3>Agregar Asignación </h3>
+      </div>
+   
+    </div > 
+    <br />
+    <div class="row">
+      <div class="col-12 text-center my-2">
+          <a type="button" class="btn btn-success" routerLink="/dashboard/{{ retornoid }}">Regresar</a>
+      </div>
+    </div> 
+     
+  <div class="container">
+
+    <!-- <form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm)"> -->
+    <form [formGroup]="addForm"  (ngSubmit)="submitForm()">  
+   
+        <div class="row">
+            <div class="col-6"><!--left side -->
+                <div class="form-group">
+                  <label for="name">MatriculaUsuario:</label>
+
+                 
+                  <input formControlName="matriculaUsuario"
+                         id="matriculaUsuario"
+                         readonly="true" 
+                         type="text"
+                          
+                         class="form-control" />
+                </div>
+  
+                <div class="form-group ">
+                  <label for="name">Nombre Completo :</label>
+                  <input formControlName="nombreUsuario"
+                        
+                        id="nombreUsuario"
+                         type="text"
+                         readonly="true"
+                         class="form-control" />
+                </div>
+  
+                <div class="form-group">
+                  <label for="name">ApellidopaternoUsuario:</label>
+                  <input formControlName="apellidopaternoUsuario"
+                         id="apellidopaternoUsuario"
+                         type="text"
+                         readonly="true"
+                         class="form-control" />
+                </div>
+            
+               
+             
+                  <div class="form-group ">
+                    <label for="name">ApellidomaternoUsuario:</label>
+                    <input formControlName="apellidomaternoUsuario"
+                           id="apellidomaternoUsuario"
+                           type="text"
+                           readonly="true"
+                           class="form-control" />
+                  </div>
+            
+                 
+                  <div class="form-group ">
+                    <label for="name">NombreChapter:</label>
+                    <input formControlName="nombreChapter"
+                           id="nombreChapter"
+                           type="text"
+                           readonly="true"
+                           class="form-control" />
+                  </div>
+                  <div class="form-group ">
+                    <label for="name">MatriculaChapter:</label>
+                    <input formControlName="matriculaChapter"
+                           id="matriculaChapter"
+                           type="text"
+                           readonly="true"
+                           class="form-control" />
+                  </div>
+               
+                  <div class="form-group ">
+                    <label for="name">Especialidad:</label>
+                    <input formControlName="especialidad"
+                           id="especialidad"
+                           type="text"
+                           readonly="true"
+                           class="form-control" />
+                  </div>
+                  <div *ngIf="authService.user$ | async as user; "> 
+                  
+                    <label for="name">Usuario:</label>
+                    <input formControlName="usuarioRegistro"
+                            
+                           type="text"
+                           readonly="true"
+                           value="{{ user.username }}"
+                           class="form-control" />
+                  </div>
+                  <div *ngIf="authService.user$ | async as user; "> 
+                    
+                      <label for="name">Usuario Modificacion :</label>
+                      <input formControlName="usuarioModificacion"
+                              
+                             type="text"
+                             readonly="true"
+                             value="{{ user.username }}"
+                             class="form-control" />
+                    </div>
+ 
+            </div> 
+  
+            <div class="col-6">
+   
+             
+              <div class="form-group"> <label class="control-label col-md-12" for="Rol">Rol</label>  
+                  <div class="col-md-12"> 
+                      <select  class="form-control"  type="number" data-val="true" id="idRol" formControlName="idRol" placeholder="select">  
+                          <option [ngValue]="null">--Seleccionar--</option>  
+                          <option *ngFor="let rol of idroles"  
+                          value={{rol.idRol}}>  
+                          {{rol.sqRol}}  
+                          </option>  
+                      </select>
+                       
+                  </div>  
+                   
+              </div>  
+
+              <div class="form-group"> <label class="control-label col-md-12" for="Squad">Squad</label>  
+                <div class="col-md-12"> 
+                    <select  class="form-control"  type="number" data-val="true" id="idSquad" formControlName="idSquad" placeholder="select">  
+                        <option [ngValue]="null">--Seleccionar--</option>  
+                        <option *ngFor="let sq of idsquad"  
+                        value={{sq.idSquad}}>  
+                        {{sq.nombreSquad}}  
+                        </option>  
+                    </select>
+                     
+                </div>  
+                 
+            </div>  
+      
+            
+
+         <div class="form-group"> <label class="control-label col-md-12" for="Aplicativo">CodigoAplicativo</label>  
+          <div class="col-md-12"> 
+              <select  class="form-control"  type="number" data-val="true" id="idAplicativo" formControlName="idAplicativo" placeholder="select">  
+                  <option [ngValue]="null">--Seleccionar--</option>  
+                  <option *ngFor="let ap of idapp"  
+                  value={{ap.idAplicativo}}>  
+                  {{ap.codAplicativo + " -" +ap.nombreAplicativo}}  
+                  </option>  
+              </select>
+               
+          </div>  
+           
+      </div> 
+ 
+              <div class="form-group ">
+                <label for="name">Porcentaje Asignación:</label>
+                <input formControlName="porcentaje"
+                       id="porcentaje"
+                       type="number"
+                       min="0" 
+                       max="99" 
+                       required
+                       class="form-control" />
+              </div> 
+        
+              <div class="form-group ">
+                <label for="name">Comentarios:</label>
+                <div class="col-md-12">
+                  <textarea class="form-control"
+                  type="text"
+                  name="comentarios"
+                  formControlName="comentarios"
+                  >
+                  </textarea>
+               </div>
+                
+                 
+              </div>
+              <div class="form-group  ">
+                <label for="name">Periodo:</label>
+                <input formControlName="fechaPeriodoAprobado"
+                       id="fechaPeriodoAprobado"
+                       type="text"
+                        
+                       class="form-control" />
+           
+               </div>  
+              <div class="form-group  ">
+                <label for="name">Fecha Registro:</label>
+                <input id="fechaRegistro"    #fechaRegistro  class="form-control" type="date" formControlName="fechaRegistro"    >                
+           
+              </div>
+              <div class="form-group  ">
+                <label for="name">Fecha Modificacion:</label>
+                {{ mi_fecha | date: 'dd/MM/yyyy'}}
+                <!-- <input id="fechaModificacion | date:'yyyy-MM-dd' : 'UTC'"  class="form-control" type="date" formControlName="fechaModificacion"    >     -->
+                <input   type="date"  value="{{ mi_fecha | date: 'dd/MM/yyyy' }}" class="form-control"   formControlName="fechaModificacion"     >            
+              
+              </div>
+
+              <div class="form-group">
+                
+                <label>Estado</label>
+                <label>
+                    <div class="col-md-12">
+                    <input type="radio" name="estado" formControlName="estado" checked   [value]="true" />Si
+                </div>
+                </label>
+                <label>
+                    <input type="radio" name="estado" formControlName="estado" [value]="false" />No 
+                </label>
+            </div>
+
+            <div class="form-group">
+              <label style="width:150px ;">Estado de Registro</label>
+              <label style="width:50px ;">
+                
+                    <input type="radio" name="estadoRegistro" formControlName="estadoRegistro" ng-reflect-value="true" checked   [value]="true" />Si
+                </label>
+                <label>
+                    <input type="radio" name="estadoRegistro" formControlName="estadoRegistro" [value]="false" />No
+                </label>
+            </div>
+
+
+             <!--  <div class="form-group  ">
+                <label for="name">Estado:</label>
+                <input formControlName="estado"
+                       id="estado"
+                       type="text"
+                        
+                       class="form-control" />
+              </div> -->
+                
+            </div><!--right side -->
+        </div> <br>
+        <button class="btn btn-primary" type="submit" [disabled]="!addForm.valid" >Agregar Asignación</button>
+      
+         
+      </form>
+  </div>

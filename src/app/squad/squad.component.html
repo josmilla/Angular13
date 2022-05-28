@@ -1,0 +1,88 @@
+<h1>Lista de Squad</h1> 
+
+<div class="row">
+  <div class="col-12 text-center my-2">
+      <a type="button" class="btn btn-success" routerLink="/agregarsquad">Agregar Squad </a>
+  </div>
+</div> 
+ 
+ <div class="d-flex justify-content-center table table-hover">
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="onTableDataChange($event)"
+  >
+  </pagination-controls>
+</div> 
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card-body table-responsive">
+ <table class="table table-hover" >
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">CODSQUAD</th>
+        <th scope="col"> NOMBRESQUAD</th>
+        <th scope="col">TRIBU</th>
+        <th scope="col">FECHAREGISTRO</th>
+        
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let squad  of result   | paginate : {
+        itemsPerPage: tableSize,
+        currentPage: page,
+        totalItems: count
+      };
+      let i= index"  > 
+ <!-- <tr   
+    *ngFor="let squad of AsignacionSquad   | paginate : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+                let i= index"
+        
+    
+    >   -->
+
+    
+       
+      <th scope="row">{{ (page - 1) * tableSize + i   }}</th>  
+        <!-- <td>{{squad.idSquad}}  </td> -->
+        <td>{{squad.codSquad}}</td>
+        <td>{{squad.nombreSquad}}</td>
+        <td>{{squad.tribucoe?.nombreTribucoe}}</td>
+         <!--  <td> {{ tagNames[ (page - 1) * tableSize + i  ] }} </td> -->
+            <td>{{ squad.fechaRegistro | date:"dd/MM/yyyy" }}</td>
+        
+        
+
+        <td>
+
+          <button type="button" class="btn btn-primary"
+                            routerLink="/squad/editarsquad/{{squad.idSquad}}">Editar</button>
+         
+    </td>
+     
+    <td>
+        <button type="button" class="btn btn-danger"
+            (click)="deletesquad(squad.idSquad)">Borrar</button>
+    </td>  
+      </tr>
+    </tbody>
+  </table>
+    </div>
+  </div>
+</div>
+   <div class="d-flex justify-content-center">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)"
+    >
+    </pagination-controls>
+  </div>
+  
+ 

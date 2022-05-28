@@ -1,0 +1,251 @@
+ 
+<section class="container">
+  <div
+    class="card mt-4 shadow"
+    *ngIf="authService.user$ | async as user; else login"
+  >
+    <h4 class="card-header">Hola {{ user.username }}   -     {{  mi_fecha | date: 'MM/yyyy'}} </h4>
+    <!-- <div class="card-body">
+      <div class="m-2">
+        <h6>Your access token is</h6>
+        {{ accessToken }}
+      </div>
+      <div class="m-2">
+        <h6>Your refresh token is</h6>
+        {{ refreshToken }}
+      </div> 
+    </div> -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">content_copy</i>
+                    </div>
+                    <p class="card-category">Asignación -  {{  mi_fecha | date: 'dd/MM/yyyy'}}</p>
+                    
+                    <h3 class="card-title">
+                        
+                             {{ this.tcarga}}
+
+                       
+                        
+                        <small>Registros</small>
+                    </h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        
+                        
+                        <button   type="button" routerLink="/cargasiga"     class="btn btn-primary">
+                            Lista de Empleados 
+                       </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">store</i>
+                    </div>
+                    <p class="card-category">Aplicativos</p>
+                    <h3 class="card-title">{{ this.tapp }} 
+                    <small>Vigentes</small></h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <button   type="button" routerLink="/aplicativo"     class="btn btn-success">
+                            Lista de Aplicativos 
+                       </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon col-md-12">
+                    <div class="card-icon col-md-12">
+                        <i class="material-icons">info_outline</i>
+                    </div>
+                    <p class="card-category">Squads / Tribucoe</p>  
+                    <h3 class="card-title">{{ this.tsquad }}  <small>Squads </small>/  {{ this.ttribu }}
+                        <small> Tribucoe</small></h3>
+                        
+                       
+                    
+                </div>
+                <div class="card-footer">
+                    
+                        <div class="stats col-md-12">
+                        <button   type="button" routerLink="/squad"     class="btn btn-warning">
+                            Lista de Squad
+                       </button> &nbsp;
+                       <button   type="button" routerLink="/tribucoe"     class="btn btn-secondary">
+                        Lista de TribuCoe
+                         </button>
+                                    
+                         
+                </div>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+    <div class="row"> 
+    <br>
+    
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <div class="card">
+                <div class="card-header card-header-tabs card-header-primary">
+                    <div class="nav-tabs-navigation">
+                        <div class="nav-tabs-wrapper">
+                            <span class="nav-tabs-title">Resumen</span>
+                            <ul class="nav nav-tabs" data-tabs="tabs">
+                                <li class="nav-item">
+                                    <a mat-button class="nav-link active" href="#rol" data-toggle="tab">
+                                        <i class="material-icons">account_box</i> Roles
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a mat-button class="nav-link  "  href="#squad" data-toggle="tab">
+                                        <i class="material-icons">assignment_ind</i> Squad
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a mat-button class="nav-link" href="#tribu" data-toggle="tab">
+                                        <i class="material-icons">cloud</i> TribuCoe
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="rol">
+                            <div class="card-body table-responsive">
+                    
+                                <table class="table table-hover">
+                                    <thead class="text-warning">
+                                        <th>ID</th>
+                                        <th>NOMBRE</th>
+                                         
+                                    </thead>
+                                    <tbody> 
+                                        <tr *ngFor="let opt of AsignacionRol.slice(0, 6);  let i = index">
+                                            <td>{{ i +1}}</td>
+                                            <td>{{opt.sqRol}}</td>
+                                             
+                                        </tr>
+                                         
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="squad">
+                            <div class="card-body table-responsive">
+                    
+                                <table class="table table-hover">
+                                    <thead class="text-warning">
+                                        <th>ID</th>
+                                        <th>NOMBRE</th>
+                                         
+                                    </thead>
+                                    <tbody> 
+                                        <tr *ngFor="let opt of AsignacionSquad.slice(0, 6);  let i = index">
+                                            <td>{{ i +1}}</td>
+                                            <td>{{opt.nombreSquad}}</td>
+                                             
+                                        </tr>
+                                         
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tribu">
+                            <div class="card-body table-responsive">
+                    
+                                <table class="table table-hover">
+                                    <thead class="text-warning">
+                                        <th>ID</th>
+                                        <th>NOMBRE</th>
+                                         
+                                    </thead>
+                                    <tbody> 
+                                        <tr *ngFor="let tri of AsignacionTribu.slice(0, 6);  let i = index">
+                                            <td>{{ i +1}}</td>
+                                            <td>{{tri.nombreTribucoe}}</td>
+                                             
+                                        </tr>
+                                         
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <div class="card" style="right: 10px;">
+                 
+                <div class="card-header card-header-warning" >
+                    <h4 class="card-title">Listado de Empleados</h4>  
+                    
+                    <p class="card-category">Nuevo Empleados</p>            
+                  </div>
+                 
+                <div class="card-body table-responsive">
+                    
+                    <table class="table table-hover">
+                        <thead class="text-warning">
+                            <th>ID</th>
+                            <th>NOMBRE</th>
+                            <th>ASIGNACION</th>
+                            <th>CHAPTER</th>
+                        </thead>
+                        <tbody> 
+                            <tr *ngFor="let opt of AsignacionCarga.slice(0, 6);  let i = index">
+                                <td>{{ i +1}}</td>
+                                <td>{{opt.nombreUsuario}}</td>
+                                <td >
+                                    <div *ngIf="opt.asignacion<100" class="colorred"> <b> {{opt.asignacion}} % </b> </div> 
+                                    <div *ngIf="opt.asignacion>100" class="colorred"> <b> {{opt.asignacion}} % </b> </div>  
+                                    <div *ngIf="opt.asignacion==100" class="colorblue"> <b> {{opt.asignacion}} % </b> </div>
+                                    
+                                    
+                                    
+                                   </td>
+                                <td>{{opt.nombreChapter}}</td>
+                            </tr>
+                             
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>     
+        </div>
+    </div>
+    
+  
+
+
+   
+</section>
+<ng-template #login>
+  <div class="card mt-4 shadow">
+    <h4 class="card-header">Has sido desconectado</h4>
+    <div class="card-body">
+      <div class="m-2">
+        Hacer click <a routerLink="login">aqui</a> para logearte.
+      </div>
+    </div>
+  </div>
+</ng-template>

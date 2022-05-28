@@ -1,0 +1,202 @@
+<div class="container">
+  <br />
+  <div class="row"  >
+    <div class="col">
+      <h3>Actualizar Asignación </h3>
+    </div>
+    <div class="col text-right">
+      <a href="#" routerLink="/dashboard/{{link}}" class="btn btn-secondary btn-sm">Regresar</a>
+    </div>
+  </div > 
+  <br />
+   
+<div class="container">
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm)">
+      <div class="row">
+          <div class="col-6"><!--left side -->
+              <div class="form-group">
+                <label for="name">MatriculaUsuario:</label>
+                <input formControlName="matriculaUsuario"
+                       id="matriculaUsuario"
+                       ng-model="datosRol" 
+                       type="text"
+                       readonly="true"
+                       class="form-control" />
+              </div>
+
+              <div class="form-group ">
+                <label for="name">Nombre Completo :</label>
+                <input formControlName="nombreUsuario"
+                      
+                id="nombreUsuario"
+                       type="text"
+                       readonly="true"
+                       class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label for="name">ApellidopaternoUsuario:</label>
+                <input formControlName="apellidopaternoUsuario"
+                       id="apellidopaternoUsuario"
+                       type="text"
+                       readonly="true"
+                       class="form-control" />
+              </div>
+          
+             
+           
+                <div class="form-group ">
+                  <label for="name">ApellidomaternoUsuario:</label>
+                  <input formControlName="apellidomaternoUsuario"
+                         id="apellidomaternoUsuario"
+                         type="text"
+                         readonly="true"
+                         class="form-control" />
+                </div>
+          
+               
+                <div class="form-group ">
+                  <label for="name">NombreChapter:</label>
+                  <input formControlName="nombreChapter"
+                         id="nombreChapter"
+                         type="text"
+                         readonly="true"
+                         class="form-control" />
+                </div>
+                <div class="form-group ">
+                  <label for="name">MatriculaChapter:</label>
+                  <input formControlName="matriculaChapter"
+                         id="matriculaChapter"
+                         type="text"
+                         readonly="true"
+                         class="form-control" />
+                </div>
+             
+                <div class="form-group ">
+                  <label for="name">Especialidad:</label>
+                  <input formControlName="especialidad"
+                         id="especialidad"
+                         type="text"
+                         readonly="true"
+                         class="form-control" />
+                </div>
+             
+          </div>
+
+          <div class="col-6">
+
+           
+           
+              <div class="form-group"> <label class="control-label col-md-12" for="Rol">Rol</label>  
+                <div class="col-md-12"> 
+                    <select  type="number" 
+                    class="form-control"  data-val="true" id="idRol" formControlName="idRol" >  
+                        <option value="null">--Seleccionar--</option>  
+                        <option *ngFor="let rol of idroles;let i=index;" 
+                        
+                        value={{rol.idRol}}>  
+                        {{rol.sqRol}}  
+                        </option>  
+                    </select>
+                     
+                </div>  
+                 
+            </div>
+        
+           
+            <div class="form-group"> <label class="control-label col-md-12" for="Squad">Squad</label>  
+              <div class="col-md-12"> 
+                  <select  type="number" class="form-control"  data-val="true" id="idSquad" formControlName="idSquad" >  
+                      <option value="null">--Seleccionar--</option>  
+                      <option *ngFor="let sq of idsquad;let i=index;" 
+                      
+                      value={{sq.idSquad}}>  
+                      {{sq.nombreSquad}}  
+                      </option>  
+                  </select>
+                   
+              </div>  
+               
+          </div>
+      
+
+
+            <div class="form-group"> <label class="control-label col-md-12" for="Aplicativo">Aplicativo</label>  
+              <div class="col-md-12"> 
+                  <select  type="number" class="form-control"  data-val="true" id="idAplicativo" formControlName="idAplicativo" >  
+                      <option value="null">--Seleccionar--</option>  
+                      <option *ngFor="let ap of idapp;let i=index;" 
+                      
+                      value={{ap.idAplicativo}}>  
+                      {{ap.codAplicativo}} - {{ap.nombreAplicativo}}    
+                      </option>  
+                  </select>
+                   
+              </div>  
+               
+          </div>
+      
+
+
+      
+            <div class="form-group ">
+              <label for="name">Porcentaje: (ejm 10%)</label>
+              <input formControlName="porcentaje"
+                     id="porcentaje"
+                     type="number" 
+                    maxlength="3" 
+                    min="0" 
+                    max="100" 
+                     required
+                     
+                     class="form-control" />
+            </div> 
+      
+            <div class="form-group ">
+              <label for="name">Comentarios:</label>
+              <div class="col-md-12">
+                <textarea class="form-control"
+                type="text"
+                name="comentarios"
+                formControlName="comentarios"
+                >
+                </textarea>
+             </div>
+              
+               
+            </div>
+            <div class="form-group  ">
+              <label for="name">Periodo:</label>
+              <input formControlName="fechaPeriodoAprobado"
+                     id="fechaPeriodoAprobado"
+                     type="text"
+                     readonly="true"
+                     class="form-control" />
+            </div>
+           
+            <div class="form-group  ">
+              <label for="name">Estado:</label>
+              <input formControlName="estado"
+                     id="estado"
+                     type="text"
+                     readonly="true"
+                     class="form-control" />
+            </div>
+              
+          </div><!--right side -->
+      </div> <br>
+      <button class="btn btn-primary" type="submit" [disabled]="!editForm.valid" >Actualizar Asignación</button>
+
+      <!-- <div class="form-group">
+        <button class="btn btn-success btn-lg btn-block" (click)="addAsignar(newasignacion)">Agregar Empleado</button>
+      </div> -->
+    </form>
+</div>
+ <script>
+
+var input = document.getElementById("fechaSubCampana");
+var meses = new Array("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre");
+var fecha = new Date();
+input.value = (fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
+var esto = input.value = (fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
+ </script>

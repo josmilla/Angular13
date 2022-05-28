@@ -1,0 +1,59 @@
+<div class="container">
+    <br />
+     
+
+    <div class="row"  >
+      <div class="col">
+        <h3>Agregar Rol </h3>
+      </div>
+      <div class="col text-right">
+        <a href="#" routerLink="/rol" class="btn btn-secondary btn-sm">Regresar</a>
+      </div>
+    </div > 
+    <br />
+    <form [formGroup]="addForm"  (ngSubmit)="submitForm()">  
+    <div class="form-row">  
+        <div class="col-12">
+        
+<!-- <form [formGroup]="employeeForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>   -->
+    
+<div class="form-group"> <label class=" control-label col-md-12">Nombre Rol</label>  
+    <div class="col-12"> <input class="form-control" type="text" formControlName="sqRol" id="sqRol"> </div>   </div> 
+ 
+
+<div class="form-group"> <label class=" control-label col-md-12">Fecha de Registro</label>  
+    <div class="col-12"> 
+        <!-- <input class="form-control"  type="date" value="{{ mi_fecha | date: 'dd/MM/yyyy' }}"   formControlName="fechaRegistro"  > -->
+        <input class="form-control"  type="date"  [(ngModel)]="mi_fecha "  id="mi_fecha"  readonly  formControlName="fechaRegistro"  > </div>  </div> 
+<div class="form-group"> <label class=" control-label col-md-12">Usuario</label>  
+    <div class="col-12"> <input class="form-control" type="text" formControlName="usuarioRegistro"  > </div>  </div> 
+<div class="form-group"> <label class=" control-label col-md-12">Fecha Modificacion</label>  
+    <div class="col-12"> 
+         
+        <input class="form-control" type="date"  [(ngModel)]="mi_fecha"  id="mi_fecha"  readonly  formControlName="fechaModificacion" id="fechaModificacion" > </div>  
+
+
+</div> 
+<div class="form-group"> <label class=" control-label col-md-12">Usuario Modificacion</label>  
+    <div class="col-12" > <input class="form-control" type="text" formControlName="usuarioModificacion"> </div>   </div>   
+    <br>
+    <div class="form-group">
+        <label style="width:150px ;">Estado de Registro</label>
+        <label style="width:50px ;">
+            <input    type="radio" name="estado" formControlName="estado" ng-reflect-value="true"   [value]="true" />Si
+        </label>
+        <label>
+            <input   type="radio" name="estado" formControlName="estado" [value]="false" />No
+        </label>
+    </div>
+    
+    </div>
+</div>
+    <br>
+ <button class="btn btn-primary" type="submit" [disabled]="!addForm.valid" >Agregar Rol</button>
+ 
+    
+ </form>  
+
+</div>
+ 

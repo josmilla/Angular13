@@ -1,0 +1,95 @@
+ 
+
+<div class="container">
+   
+
+    <div class="row"  >
+      <div class="col">
+        <h1>Crear Squad </h1>
+      </div>
+
+      <div class="row">
+        <div class="col-12 text-center my-2">
+            <a type="button" class="btn btn-secondary btn-sm" routerLink="/squad">Regresar</a>
+        </div>
+      </div> 
+     
+    </div > 
+    <br />
+    <form [formGroup]="addForm"  (ngSubmit)="submitForm()">  
+    <!-- <form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm)" #formDir="ngForm" novalidate> -->
+    <div class="form-row">  
+        <div class="col-12">
+        
+ 
+    <div class="form-group"> <label class=" control-label col-md-12">Codigo Squad</label>  
+        <div class="col-12"> <input class="form-control" type="text" formControlName="codSquad" id="codSquad"> </div>  
+  </div>  
+<div class="form-group"> <label class=" control-label col-md-12">Nombre Squad</label>  
+    <div class="col-12"> <input class="form-control" type="text" formControlName="nombreSquad" id="nombreSquad"> </div>   </div> 
+ 
+
+    <div class="form-group"> <label class="control-label col-md-12" for="Tribu">Tribu</label>  
+        <div class="col-md-12"> 
+            <select  type="number" class="form-control"  data-val="true" id="idTribucoe" formControlName="idTribucoe" >  
+                <option value="null">--Seleccionar--</option>  
+                <option *ngFor="let trib of idtribu;let i=index;" 
+                
+                value={{trib.idTribucoe}}>  
+                {{trib.nombreTribucoe}}  
+                </option>  
+            </select>
+             
+        </div>  
+         
+    </div>
+
+
+ 
+<div class="form-group"> <label class=" control-label col-md-12">Fecha de Registro</label>  
+    <div class="col-12"> 
+        <input  [(ngModel)]="mi_fecha"  id="mi_fecha"  readonly  class="form-control"     type="date" formControlName="fechaRegistro"  > 
+    </div>
+ </div> 
+<div class="form-group"> <label class=" control-label col-md-12">Usuario</label>  
+    <div class="col-12"> <input class="form-control" id="usuarioRegistro" type="text" formControlName="usuarioRegistro" > 
+    </div>
+ </div> 
+<div class="form-group"> <label class=" control-label col-md-12">Fecha Modificacion</label>  
+    <div class="col-12"> 
+        <input   [(ngModel)]="mi_fecha"  id="mi_fecha"  readonly   class="form-control"   type="date"   formControlName="fechaModificacion"  > 
+     
+    </div>  
+
+
+</div> 
+<div class="form-group"> <label class=" control-label col-md-12">Usuario Modificacion</label>  
+    <div class="col-12" > <input class="form-control" type="text" formControlName="usuarioModificacion" id="usuarioModificacion"> </div>   </div> 
+     
+<div class="form-group"> <label class=" control-label col-md-12">Estado</label>  
+    <div class="col-12"> 
+        
+        <div class="form-group">
+            <label style="width:150px ;">Estado de Registro</label>
+              <label style="width:50px ;">
+                <input  [(ngModel)]="estadoregistro" id="estadoRegistro"  type="radio" name="estado" formControlName="estado" checked    [value]="true" />Si
+            </label>
+            <label>
+                <input  type="radio" name="estado" formControlName="estado" [value]="false" />No
+            </label>
+            </div>
+        
+          </div>   
+    </div> 
+</div>
+</div> 
+    
+  
+    <br>
+ <button class="btn btn-primary" type="submit" [disabled]="!addForm.valid" >Agregar Squad</button>
+ 
+    
+ </form>  
+
+</div>
+ 

@@ -1,0 +1,79 @@
+<h1>Lista de Aplicativo</h1> 
+
+<div class="row">
+  <div class="col-12 text-center my-2">
+      <a type="button" class="btn btn-success" routerLink="/agregaraplicativo">Agregar Aplicativo </a>
+  </div>
+</div> 
+ 
+<div class="d-flex justify-content-center table table-hover">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)"
+    >
+    </pagination-controls>
+  </div>  
+
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="card-body table-responsive">
+        <table class="table table-hover" >
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">CODIGO</th>
+        <th scope="col"> NOMBRE</th>
+        <th scope="col">BIDDINGBLOCK</th>
+        <th scope="col">ESTADOAPP</th>
+        <th scope="col">FECHAREGISTRO</th>
+        
+    </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let app  of Asignacionapp   | paginate : {
+            itemsPerPage: tableSize,
+            currentPage: page,
+            totalItems: count
+          };
+          let i= index"  > 
+      
+      
+          <th scope="row">{{ (page - 1) * tableSize + i   }}</th>  
+      
+        <td>{{app.codAplicativo}}</td>
+        <td>{{app.nombreAplicativo}}</td>
+        <td>{{app.biddingblockAplicativo}}</td>
+        <td>{{app.estadoAplicativo}}</td>
+         <td>{{ app .fechaRegistro | date:"dd/MM/yyyy" }}</td>
+        
+        
+
+        <td>
+
+          <button type="button" class="btn btn-primary"
+                            routerLink="/tribucoe/editartribu/{{app.idAplicativo}}">Editar</button>
+         
+    </td>
+     
+    <td>
+        <button type="button" class="btn btn-danger"
+            (click)="deletesquad(app.idAplicativo)">Borrar</button>
+    </td>  
+      </tr>
+    </tbody>
+  </table>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center table table-hover">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)"
+    >
+    </pagination-controls>
+  </div>   
+ 

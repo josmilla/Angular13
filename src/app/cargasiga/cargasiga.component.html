@@ -1,0 +1,116 @@
+<h1>Lista de Empleados</h1> 
+
+
+<div class="row">
+  <div class="col-12 text-center my-2">
+
+    <div class="row">
+      <div class="col-12 text-center my-2">
+        <button type="button" class="btn btn-primary" (click)="getusersiga()">Generar Nueva Asignación </button><br>  
+      </div>
+    
+      <a style="cursor: pointer" (click)="exportexcel()">
+        <mat-icon> cloud_download</mat-icon>
+      </a>
+    
+    </div> 
+    
+ 
+    <div>
+      <div style="display: block">
+         
+      </div>
+    </div>
+ 
+    <div class="row">
+      <div class="col-md-12">
+ 
+        <div class="d-flex justify-content-center table table-hover">
+  <pagination-controls
+     previousLabel="Atras"
+    nextLabel="Siguiente"
+    (pageChange)="onTableDataChange($event)"
+  >
+  </pagination-controls> 
+</div>   
+<div class="card-body table-responsive">
+ <table class="table" table table-hover id="excel-table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">MATRICULA</th>
+        <th scope="col"> NOMBREUSUARIO</th>
+        <th scope="col">APELLIDOPATERNO</th>
+        <th scope="col">APELLIDOMATERNO</th>
+        <th scope="col">NOMBRECAL</th>
+        <th scope="col">NOMBRECHAPTER</th>
+        <th scope="col">TIPOPREPER</th>
+        <th scope="col">EMPRESA</th>
+        <th scope="col">ESPECIALIDAD</th>
+        <th scope="col">%ASIGNADA</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+       <tr   
+    *ngFor="let siga of datauser | paginate : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+                let it=index;
+        "
+    
+    >    
+
+    <!-- <tr   
+    *ngFor="let siga of AsignacionCarga ;
+                let it=index;
+        "
+    
+    >   -->
+    
+        <td>{{ siga.idCarga }}</td>
+        <td>{{siga.matriculaUsuario}}</td>
+        <td>{{siga.nombreUsuario}}</td>
+        <td>{{siga.apellidopaternoUsuario}}</td>
+        <td>{{siga.apellidomaternoUsuario}}</td>
+        <td>{{siga.nombreCal}}</td>
+        <td>{{siga.nombreChapter}}</td>
+        <td>{{siga.tipoPreper}}</td>
+        <td>{{siga.empresa}}</td>
+        <td>{{siga.especialidad}}</td>
+        
+
+        <td> 
+          
+          <div *ngIf="siga.asignacion<100" class="colorred"> <b> {{siga.asignacion}} % </b> </div> 
+          <div *ngIf="siga.asignacion>100" class="colorred"> <b> {{siga.asignacion}} % </b> </div>  
+          <div *ngIf="siga.asignacion==100" class="colorblue"> <b> {{siga.asignacion}} % </b> </div>
+        
+
+
+        <td>
+
+          <button type="button" class="btn btn-primary"
+                            routerLink="/dashboard/{{siga.matriculaUsuario}}">Ver Asignacion</button>
+        
+    </td>
+   
+      </tr>
+    </tbody>
+  </table>
+</div>  
+</div>
+</div>
+             <!-- <div class="d-flex justify-content-center">
+                <pagination-controls
+                  previousLabel="Atras"
+                  nextLabel="Siguiente"
+                  (pageChange)="onTableDataChange($event)"
+                >
+                </pagination-controls>
+                </div>   -->
+  </div>
+  </div>
+ 

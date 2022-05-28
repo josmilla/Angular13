@@ -1,0 +1,60 @@
+<div class="container">
+    <br />
+     
+
+    <div class="row"  >
+      <div class="col">
+        <h3>Actualizar Rol </h3>
+      </div>
+      <div class="col text-right">
+        <a href="#" routerLink="/rol" class="btn btn-secondary btn-sm">Regresar</a>
+      </div>
+    </div > 
+    <br />
+<form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm)" #formDir="ngForm" novalidate>
+    <div class="form-row">  
+        <div class="col-12">
+        
+<!-- <form [formGroup]="employeeForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>   -->
+    <div class="form-group"> <label class=" control-label col-md-12">ID</label>  
+        <div class="col-12"> <input class="form-control" readonly="true" type="text" formControlName="idRol" id="idRol"> </div>  
+  </div>  
+<div class="form-group"> <label class=" control-label col-md-12">Nombre Rol</label>  
+    <div class="col-12"> <input class="form-control" type="text" formControlName="sqRol" id="sqRol"> </div>   </div> 
+ 
+
+<div class="form-group"> <label class=" control-label col-md-12">Fecha de Registro</label>  
+    <div class="col-12"> 
+        <input [ngModel]="rol.fechaRegistro | date:'yyyy-MM-dd' : 'UTC'" class="form-control" readonly="true" type="date" formControlName="fechaRegistro" value="fechaRegistro"> </div>  </div> 
+<div class="form-group"> <label class=" control-label col-md-12">Usuario</label>  
+    <div class="col-12"> <input class="form-control" type="text" formControlName="usuarioRegistro" readonly="true"> </div>  </div> 
+<div class="form-group"> <label class=" control-label col-md-12">Fecha Modificacion</label>  
+    <div class="col-12"> 
+         
+        <input [value]="rol.fechaModificacion | date:'yyyy-MM-dd' : 'UTC'"  class="form-control" type="date" formControlName="fechaModificacion" id="fechaModificacion" > </div>  
+
+
+</div> 
+<div class="form-group"> <label class=" control-label col-md-12">Usuario Modificacion</label>  
+    <div class="col-12" > <input class="form-control" type="text" formControlName="usuarioModificacion"> </div>   </div>   
+    <br>
+    <div class="form-group">
+        <label style="width:150px ;">Estado de Registro</label>
+        <label style="width:50px ;">
+            <input    type="radio" name="estado" formControlName="estado" ng-reflect-value="true"   [value]="true" />Si
+        </label>
+        <label>
+            <input   type="radio" name="estado" formControlName="estado" [value]="false" />No
+        </label>
+    </div>
+    
+    </div>
+</div>
+    <br>
+ <button class="btn btn-primary" type="submit" [disabled]="!editForm.valid" >Actualizar Squad</button>
+ 
+    
+ </form>  
+
+</div>
+ 
